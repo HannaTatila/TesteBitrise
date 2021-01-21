@@ -26,8 +26,7 @@ class ListComicsViewModel(
     }
 
     fun getComicsList() {
-        comicsUseCase()
-            .subscribeOn(Schedulers.io())
+        comicsUseCase().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 it?.let { comicList ->

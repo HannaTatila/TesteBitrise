@@ -12,8 +12,8 @@ class ComicRepositoryImpl(
 ) : ComicRepository {
 
     override fun get(): Single<List<Comic>> {
-        return comicRemoteDataSource.get().map { comicResponse ->
-            comicMapper.map(comicResponse)
+        return comicRemoteDataSource.get()
+            .map { comicResponse -> comicMapper.map(comicResponse)
         }
     }
 }

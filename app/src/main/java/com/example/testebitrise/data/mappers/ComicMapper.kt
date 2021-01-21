@@ -11,7 +11,7 @@ class ComicMapper {
                 comicResponse.id,
                 comicResponse.title,
                 comicResponse.description,
-                comicResponse.releaseDate
+                comicResponse.releaseDateList?.get(0)?.releaseDate
             )
         }
     }

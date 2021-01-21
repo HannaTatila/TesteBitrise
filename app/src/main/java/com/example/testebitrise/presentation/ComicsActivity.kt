@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testebitrise.R
 import com.example.testebitrise.di.ComicsModule
 import com.google.android.material.snackbar.Snackbar
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_comics.*
 
 class ComicsActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class ComicsActivity : AppCompatActivity() {
     }
 
     private fun handleState() {
-        viewModel.comicsViewState.observe(this, { comicsListViewState ->
+        viewModel.comicsViewState.observe(this, Observer { comicsListViewState ->
             with(recyclerComics) {
                 adapter = ComicsAdapter(comicsListViewState.comicsList) {}
                 layoutManager = LinearLayoutManager(this@ComicsActivity)
@@ -29,7 +30,7 @@ class ComicsActivity : AppCompatActivity() {
     }
 
     private fun handleAction() {
-        viewModel.comicsAction?.observe(this, { action ->
+        viewModel.comicsAction.observe(this, Observer { action ->
             when (action) {
                 is ComicsAction.ShowSnackBar -> showSnackbar(action.message)
                 is ComicsAction.NavigateToDetailsComicActivity -> null //startDetailsComic(action.idComic)

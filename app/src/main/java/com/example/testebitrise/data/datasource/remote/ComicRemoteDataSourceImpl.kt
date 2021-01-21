@@ -8,7 +8,6 @@ class ComicRemoteDataSourceImpl(private val comicService: ComicService) : ComicR
 
     override fun get(): Single<List<ComicResponse>> {
         return comicService.getComicsList()
-            .doOnError { error -> error.printStackTrace() }
             .onErrorResumeNext { throwable -> Single.error(throwable) }
             .map { it.comicsData.comicsResultsList }
     }
