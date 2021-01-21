@@ -96,6 +96,7 @@ object ComicsModule {
             .baseUrl(url)
             .client(okHttp)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
