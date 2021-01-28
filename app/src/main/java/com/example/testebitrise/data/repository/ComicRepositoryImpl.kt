@@ -13,7 +13,15 @@ class ComicRepositoryImpl(
 
     override fun get(): Single<List<Comic>> {
         return comicRemoteDataSource.get()
-            .map { comicResponse -> comicMapper.map(comicResponse)
-        }
+            .map { comicResponse ->
+                comicMapper.map(comicResponse)
+            }
+    }
+
+    override fun getById(idComic: Int): Single<Comic> {
+        return comicRemoteDataSource.getById(idComic)
+            .map { comicResponse ->
+                comicMapper.map(comicResponse)
+            }
     }
 }

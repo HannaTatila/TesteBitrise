@@ -15,4 +15,13 @@ class ComicMapper {
             )
         }
     }
+
+    fun map(source: ComicResponse): Comic {
+        return Comic(
+            source.id,
+            source.title,
+            source.description,
+            source.releaseDateList?.get(0)?.releaseDate
+        )
+    }
 }

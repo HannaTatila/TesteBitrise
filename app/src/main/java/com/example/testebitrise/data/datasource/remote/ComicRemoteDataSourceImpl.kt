@@ -11,4 +11,9 @@ class ComicRemoteDataSourceImpl(private val comicService: ComicService) : ComicR
             .onErrorResumeNext { throwable -> Single.error(throwable) }
             .map { it.comicsData.comicsResultsList }
     }
+
+    override fun getById(idComic: Int): Single<ComicResponse> {
+        return comicService.getComic(idComic)
+            .map { it.comicsData.comicsResultsList[0] }
+    }
 }

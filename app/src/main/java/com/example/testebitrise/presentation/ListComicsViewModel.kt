@@ -44,7 +44,7 @@ class ListComicsViewModel(
     }
 
     fun navigateToDetailsComicActivity(idComic: Int) {
-        //comicsActionSingleLive.postValue(ComicsAction.NavigateToDetailsComicActivity(idComic))
+        comicsActionSingleLive.postValue(ComicsAction.NavigateToDetailsComicActivity(idComic))
     }
 
     override fun onCleared() {

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.item_list_comics.view.*
 
 class ComicsAdapter(
     private val listComics: List<Comic>,
-    private val click: ((comic: Comic) -> Unit)
+    private val click: (idComic: Int) -> Unit
 ) :
     RecyclerView.Adapter<ComicsAdapter.ComicsViewHolder>() {
 
@@ -31,7 +31,7 @@ class ComicsAdapter(
 
     class ComicsViewHolder(
         itemView: View,
-        private val click: ((comic: Comic) -> Unit)
+        private val click: (idComic: Int) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val viewTitle = itemView.textComicTitle
@@ -43,7 +43,7 @@ class ComicsAdapter(
             viewReleaseDate.text = comic.releaseDate
             viewDescription.text = comic.description
 
-            itemView.setOnClickListener { click.invoke(comic) }
+            itemView.setOnClickListener { click.invoke(comic.id) }
         }
     }
 }

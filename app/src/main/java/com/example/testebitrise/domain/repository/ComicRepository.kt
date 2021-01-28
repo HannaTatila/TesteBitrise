@@ -6,4 +6,5 @@ import io.reactivex.Single
 interface ComicRepository {
 
     fun get() : Single<List<Comic>>
+    fun getById(idComic: Int) : Single<Comic>
 }

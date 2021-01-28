@@ -2,11 +2,10 @@ package com.example.testebitrise.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testebitrise.R
 import com.example.testebitrise.di.ComicsModule
-import com.google.android.material.snackbar.Snackbar
-import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_comics.*
 
 class ComicsActivity : AppCompatActivity() {
@@ -23,7 +22,9 @@ class ComicsActivity : AppCompatActivity() {
     private fun handleState() {
         viewModel.comicsViewState.observe(this, Observer { comicsListViewState ->
             with(recyclerComics) {
-                adapter = ComicsAdapter(comicsListViewState.comicsList) {}
+                adapter = ComicsAdapter(comicsListViewState.comicsList) { idComic ->
+                    viewModel.navigateToDetailsComicActivity(idComic)
+                }
                 layoutManager = LinearLayoutManager(this@ComicsActivity)
             }
         })
@@ -32,15 +33,14 @@ class ComicsActivity : AppCompatActivity() {
     private fun handleAction() {
         viewModel.comicsAction.observe(this, Observer { action ->
             when (action) {
-                is ComicsAction.ShowSnackBar -> showSnackbar(action.message)
-                is ComicsAction.NavigateToDetailsComicActivity -> null //startDetailsComic(action.idComic)
+                is ComicsAction.NavigateToDetailsComicActivity -> startDetailsComic(action.idComic)
             }
         })
     }
 
-    private fun showSnackbar(message: String) {
-        Snackbar.make(recyclerComics, message, Snackbar.LENGTH_LONG)
-            .show()
+    private fun startDetailsComic(idComic: Int) {
+        val intent = DetailsComicActivity.newInstance(this, idComic)
+        startActivity(intent)
     }
 
     override fun onResume() {

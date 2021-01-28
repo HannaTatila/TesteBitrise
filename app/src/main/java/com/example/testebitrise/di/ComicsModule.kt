@@ -6,8 +6,11 @@ import com.example.testebitrise.data.mappers.ComicMapper
 import com.example.testebitrise.data.repository.ComicRepositoryImpl
 import com.example.testebitrise.data.services.ComicService
 import com.example.testebitrise.domain.repository.ComicRepository
+import com.example.testebitrise.domain.usecase.GetComicByIdUseCase
+import com.example.testebitrise.domain.usecase.GetComicByIdUseCaseImpl
 import com.example.testebitrise.domain.usecase.GetComicUseCase
 import com.example.testebitrise.domain.usecase.GetComicUseCaseImpl
+import com.example.testebitrise.presentation.DetailsComicViewModel
 import com.example.testebitrise.presentation.ListComicsViewModel
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
@@ -31,4 +34,9 @@ object ComicsModule {
     private val viewModel: ListComicsViewModel = ListComicsViewModel(useCase)
 
     val viewModelInstance = viewModel
+
+    private val useCaseDetails: GetComicByIdUseCase = GetComicByIdUseCaseImpl(repository)
+    private val viewModelDetails: DetailsComicViewModel = DetailsComicViewModel(useCaseDetails)
+
+    val viewModelDetailsInstance = viewModelDetails
 }

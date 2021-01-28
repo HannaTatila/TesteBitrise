@@ -8,4 +8,5 @@ import retrofit2.Call
 interface ComicRemoteDataSource {
 
     fun get(): Single<List<ComicResponse>>
+    fun getById(idComic: Int): Single<ComicResponse>
 }
