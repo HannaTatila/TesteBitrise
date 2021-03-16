@@ -11,31 +11,72 @@
         android:id="@+id/progressDetailComic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/loadingContentGroup"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:constraint_referenced_ids="textTitleDetailComic,textDateDetailComic,textDescriptionDetailComic,textLabelCharacterDetailComic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textTitleDetailComic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="26sp"
         android:textColor="?colorPrimaryDark"
-        android:paddingBottom="16dp"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:text="Título" />
+
+    <TextView
+        android:id="@+id/textDateDetailComic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Título"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleDetailComic"
+        tools:text="Data..." />
 
     <TextView
         android:id="@+id/textDescriptionDetailComic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleDetailComic"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="@tools:sample/lorem/random"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDateDetailComic"
+        tools:text="@tools:sample/lorem" />
+
+    <TextView
+        android:id="@+id/textLabelCharacterDetailComic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_details_comic_character_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDescriptionDetailComic" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerComics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelCharacterDetailComic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

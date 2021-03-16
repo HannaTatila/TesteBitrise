@@ -1,6 +1,6 @@
 package com.example.testebitrise.data.mappers
 
-import com.example.testebitrise.data.datasource.model.ComicResponse
+import com.example.testebitrise.data.model.ComicResponse
 import com.example.testebitrise.domain.model.Comic
 
 class ComicMapper {
@@ -11,7 +11,7 @@ class ComicMapper {
                 comicResponse.id,
                 comicResponse.title,
                 comicResponse.description,
-                comicResponse.releaseDateList?.get(0)?.releaseDate
+                comicResponse.releaseDateResponseList?.get(0)?.releaseDate
             )
         }
     }
@@ -21,7 +21,7 @@ class ComicMapper {
             source.id,
             source.title,
             source.description,
-            source.releaseDateList?.get(0)?.releaseDate
+            source.releaseDateResponseList?.get(0)?.releaseDate
         )
     }
 }

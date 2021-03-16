@@ -25,8 +25,8 @@ class ComicsAdapter(
         return listComics.count()
     }
 
-    override fun onBindViewHolder(contatosViewHolder: ComicsViewHolder, position: Int) {
-        contatosViewHolder.bindView(listComics[position])
+    override fun onBindViewHolder(comicsViewHolder: ComicsViewHolder, position: Int) {
+        comicsViewHolder.bindView(listComics[position])
     }
 
     class ComicsViewHolder(

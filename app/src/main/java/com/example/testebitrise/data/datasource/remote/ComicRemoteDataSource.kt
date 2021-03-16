@@ -1,12 +1,12 @@
 package com.example.testebitrise.data.datasource.remote
 
-import com.example.testebitrise.data.datasource.model.ComicResponse
-import com.example.testebitrise.data.repository.ComicsApiResponse
+import com.example.testebitrise.data.model.CharacterResponse
+import com.example.testebitrise.data.model.ComicResponse
 import io.reactivex.Single
-import retrofit2.Call
 
 interface ComicRemoteDataSource {
 
     fun get(): Single<List<ComicResponse>>
     fun getById(idComic: Int): Single<ComicResponse>
+    fun getCharacter(idComic: Int): Single<List<CharacterResponse>>
 }
